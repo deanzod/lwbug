@@ -10,14 +10,16 @@ use Livewire\Component;
 class Test extends Component
 {
 
-    public $company;
+    public $companies;
     public $something;
+
     public function mount()
     {
         $this->user = User::find(1);
-        $this->company = $this->user->company->first();
-        $this->other = $this->company->other;
-        // dd(auth()->user()->company); 
+        $this->companies = $this->user->companies->first();
+        $this->other = $this->companies->others;
+
+        // dd(auth()->user()->companies); 
         // correctly shows the 1 related company
     }
 
@@ -25,7 +27,7 @@ class Test extends Component
     public function submit()
     {
         // incorrectly shows all companies
-        dd(auth()->user()->company);
+        dd(auth()->user()->companies);
     }
 
     public function render()

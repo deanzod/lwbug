@@ -13,11 +13,9 @@ class Related extends Model
     {
         parent::boot();
         static::addGlobalScope('test', function (Builder $builder) {
-            $builder->where('other_id', \Auth::user()->company->first()->id);
+            if (\Auth::check()) {
+                $builder->where('other_id', \Auth::user()->companies->first()->id);
+            }
         });
-    }
-    public function other()
-    {
-        return $this->belongsTo(Other::class);
     }
 }

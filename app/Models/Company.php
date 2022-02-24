@@ -9,7 +9,7 @@ class Company extends Model
 {
     use HasFactory;
 
-    public function other()
+    public function others()
     {
         return $this->hasMany(Other::class)->whereHas('related')->orderBy('name');
     }

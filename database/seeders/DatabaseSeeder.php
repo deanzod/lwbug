@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(5)->create()->each(function ($user) {
             $company =  \App\Models\Company::factory()->hasOthers()->create();
-
             $user->companies()->attach($company);
         });
     }
